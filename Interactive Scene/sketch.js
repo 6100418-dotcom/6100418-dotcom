@@ -2,26 +2,34 @@
 // Mason Wick
 // 9/21/26
 
-// this works better if you have the window only half the screen
+
+
+// the sun works better if you have the window only half the screen
 
 let centerX, centerY;
 let arcRadius;
+
 let planeX = 0;
 let planeY = 0;
+
 let currentBack = 0;
 let backColor = 0;
 
+let sunStyle = 0;
+let sunColor = (255, 250, 105);
+
 function setup() {
   createCanvas(windowWidth, windowHeight);
+
   arcRadius = width / 2.5;
   centerX = width / 2;
   centerY = height / 2;
+
   setInterval(addX, 1);
 }
 
 function draw() {
   changeY();
-  changeBackground();
 
   // sun
 
@@ -33,29 +41,29 @@ function draw() {
   let x = centerX - arcRadius * cos(angle);
   let y = centerY + arcRadius * sin(-angle);
 
-  fill(255, 250, 105);
+  fill(sunColor[0], sunColor[1], sunColor[2]);
   noStroke();
   circle(x, y, 150);
 
   // environment
 
   fill(100, 100, 100);
-  triangle(height, width, width / 2, height / 3, 0, height);
+  triangle(width, height, width / 2, height / 3, 0, height);
 
   fill(107, 107, 107);
-  triangle(height, width, width / 7, height / 2, 0, height);
+  triangle(width, height, width / 7, height / 2, 0, height);
 
   fill(115, 115, 115);
-  triangle(height, width, width / 3 + width / 2, height / 2, 0, height);
+  triangle(width, height, width / 3 + width / 2, height / 2, 0, height);
 
   fill(255, 255, 255);
   ellipse(100, 100, 100, 30);
   ellipse(150, 100, 100, 30);
   ellipse(125, 75, 100, 30);
 
-  ellipse(700, 250, 100, 30);
-  ellipse(725, 225, 100, 30);
-  ellipse(750, 250, 100, 30);
+  ellipse(width - 100, 250, 100, 30);
+  ellipse(width- 125, 225, 100, 30);
+  ellipse(width - 150, 250, 100, 30);
 
   // character
   fill(230, 230, 230);
@@ -74,12 +82,16 @@ function draw() {
   text("Mason Wick", 20, height - 20);
 }
 
+// moves the plane across the screen
+
 function addX() {
   if (planeX >= width) {
     planeX = 0;
   }
   planeX += 1;
 }
+
+// allows user to change planes y
 
 function changeY() {
   if(keyIsDown(UP_ARROW)){
@@ -91,7 +103,9 @@ function changeY() {
   }
 }
 
-function changeBackground() {
+// cycles the background when middle mouse button is pressed
+
+function mousePressed() {
   if (mouseButton.center === true) {
 
     if (currentBack === 0) {
@@ -109,6 +123,17 @@ function changeBackground() {
     else if (currentBack === 3) {
       currentBack = 0;
       backColor += 85;
+    }
+  } 
+
+  else if (mouseButton.left === true) {
+    if (sunStyle === 0) {
+      sunStyle = 1;
+      sunColor = (210, 210, 210);
+    }
+    else if (sunStyle === 1) {
+      sunStyle = 0;
+      sunColor = (255, 250, 105);
     }
   }
 }

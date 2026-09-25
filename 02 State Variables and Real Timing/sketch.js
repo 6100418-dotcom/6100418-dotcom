@@ -56,7 +56,7 @@ function keyPressed() {
   updateState();
 }
 
-function updateState(){
+function updateState() {
   objectType++;
   if (objectType > 2) {
     objectType = 0;

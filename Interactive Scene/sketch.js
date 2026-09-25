@@ -16,7 +16,7 @@ let currentBack = 0;
 let backColor = 0;
 
 let sunStyle = 0;
-let sunColor = (255, 250, 105);
+let sunColor = [255, 250, 105];
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -129,11 +129,11 @@ function mousePressed() {
   else if (mouseButton.left === true) {
     if (sunStyle === 0) {
       sunStyle = 1;
-      sunColor = (210, 210, 210);
+      sunColor = [210, 210, 210];
     }
     else if (sunStyle === 1) {
       sunStyle = 0;
-      sunColor = (255, 250, 105);
+      sunColor = [255, 250, 105];
     }
   }
 }

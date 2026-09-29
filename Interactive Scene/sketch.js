@@ -2,9 +2,10 @@
 // Mason Wick
 // 9/21/26
 
-
-
-// the sun works better if you have the window only half the screen
+// Left click to switch between sun and moon.
+// Middle click to change the sky color.
+// Up and down arrows to change planes Y position.
+// the sun works better if you have the window only half the screen.
 
 let centerX, centerY;
 let arcRadius;

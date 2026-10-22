@@ -7,7 +7,7 @@ let eastbound = [];
 let westbound = [];
 let Light = 0;
 let canGo = true;
-let startFrame = 0;
+let startFrame;
 
 async function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -28,6 +28,10 @@ function draw() {
     w.action();
   }
   Light.display();
+
+  if (startFrame + 120 === frameCount) {
+    Light.switch();
+  }
 }
 
 function mousePressed() {
@@ -40,7 +44,7 @@ function mousePressed() {
 }
 
 function keyPressed() {
-  if (key === ' ') {
+  if (key === " " && canGo === true) {
     Light.switch();
     startFrame = frameCount;
   }
@@ -90,16 +94,18 @@ class Vehicle {
   }
 
   move() {
-    if (this.d === 0) {
-      this.x += this.xSpeed;
-      if (this.x >= width) {
-        this.x = 0;
+    if (canGo === true) {
+      if (this.d === 0) {
+        this.x += this.xSpeed;
+        if (this.x >= width) {
+          this.x = 0;
+        }
       }
-    }
-    else {
-      this.x -= this.xSpeed;
-      if (this.x <= 0) {
-        this.x = width;
+      else {
+        this.x -= this.xSpeed;
+        if (this.x <= 0) {
+          this.x = width;
+        }
       }
     }
   }
@@ -146,7 +152,8 @@ class TrafficLight {
   display() {
     if (this.c === 0) {
       fill("green");
-    } else {
+    }
+    else {
       fill("red");
     }
     circle(width / 2, height / 5, 100);
@@ -156,6 +163,10 @@ class TrafficLight {
     if (this.c === 0) {
       this.c = 1;
       canGo = false;
+    }
+    else {
+      this.c = 0;
+      canGo = true;
     }
   }
 }

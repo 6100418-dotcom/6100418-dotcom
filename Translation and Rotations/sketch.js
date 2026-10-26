@@ -11,6 +11,11 @@ async function setup() {
 function draw() {
   background(220);
   translate(width / 2, height / 2);
+  clock();
+
+}
+
+function clock() {
   fill(255);
   strokeWeight(1);
   circle(0, 0, 400);
@@ -33,19 +38,19 @@ function draw() {
   
   push();
   strokeWeight(1);
-  rotate(second() * 6);
+  rotate(second() * 6  + 225);
   line(0, 0, 100, 100);
   pop();
 
   push();
   strokeWeight(5);
-  rotate(minute() * 6);
+  rotate(minute() * 6 + 225);
   line(0, 0, 100, 100);
   pop();
 
   push();
   strokeWeight(5);
-  rotate(hour() * 3);
+  rotate(hour() * 3 + 225);
   line(0, 0, 50, 50);
   pop();
 }

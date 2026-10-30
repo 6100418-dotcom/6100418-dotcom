@@ -11,18 +11,17 @@ async function setup() {
 function draw() {
   background(220);
   if(mouseIsPressed){
-    objects.push(new Ball(mouseX, mouseY));
+    objects.push(new Ball(mouseX, mouseY,));
   }
 
   for(let o of objects){
-    if(keyIsDown(" ")) {
+    if(!keyIsDown("a")) {
       o.move();
     }
     o.display();
   }
 }
-
-
+ 
 class Ball{
   constructor(x, y){
     this.pos = createVector(x, y);
@@ -39,7 +38,7 @@ class Ball{
   }
 
   move(){
-    if(false){
+    if(keyIsDown(" ")){
       this.calcMouse();
       this.vel.add(this.force);
       this.vel.limit(20);
@@ -49,11 +48,11 @@ class Ball{
     }
     this.pos.add(this.vel);
 
-    if(this.pos.x < 0 || this.pos.x > width){
+    if(this.pos.x < 0 || this.pos.x >= width){
       this.vel.x *= -1;
     }
 
-    if(this.pos.y > height){
+    if(this.pos.y >= height){
       this.vel.y *= -0.9;
     }
   }
@@ -61,7 +60,7 @@ class Ball{
   display(){
     circle(this.pos.x, this.pos.y, 20);
 
-    if(true){
+    if(false){
       stroke(255,0,0);
       line(0,0,this.pos.x,this.pos.y);
 

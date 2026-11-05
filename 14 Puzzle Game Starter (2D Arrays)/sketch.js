@@ -4,9 +4,9 @@
 
 let grid = [
   [0, 0, 0, 0, 0, 0], 
-  [0, 0, 0, 0, 0, 0], 
-  [0, 0, 0, 0, 0, 0], 
-  [0, 0, 0, 0, 0, 0], 
+  [0, 0, 255, 0, 0, 0], 
+  [0, 255, 255, 255, 0, 0], 
+  [0, 0, 255, 0, 0, 0], 
   [0, 0, 0, 0, 0, 0]
 ];
 let rows = grid.length;
@@ -15,29 +15,40 @@ let tileSize = 60;
 
 async function setup() {
   createCanvas(cols*tileSize, rows*tileSize);
+  randomize();
 }
 
 function draw() {
   background(220);
   renderGrid();
+  if (winCondition() === true) {
+    fill("red");
+    textSize(32);
+    text("You Win!",width / 2 - 40, height / 2);
+  }
 }
 
 function mousePressed(){
   if (mouseX < width && mouseY < height) {
     let x = getCurrentX();
     let y = getCurrentY();
-    flip(x, y);
-    if (x-1 >= 0){
-      flip(x-1, y);
+    if (keyIsDown(SHIFT)) {
+      flip(x, y);
     }
-    if (y-1 >= 0){
-      flip(x, y-1);
-    }
-    if (x+1 <= 5){
-      flip(x+1, y);
-    }
-    if (y+1 <= 4){
-      flip(x, y+1);
+    else {
+      flip(x, y);
+      if (x+1 <= cols-1){
+        flip(x+1, y);
+      }
+      if (x-1 >= 0){
+        flip(x-1, y);
+      }
+      if (y+1 <= rows-1){
+        flip(x, y+1);
+      }
+      if (y-1 >= 0){
+        flip(x, y-1);
+      }
     }
   }
 }
@@ -69,5 +80,31 @@ function renderGrid(){
       fill(fillColor);
       square(x*tileSize, y*tileSize, tileSize);
     }
+  }
+}
+
+function randomize() {
+  for (let y = 0; y < rows; y++){
+    for (let x = 0; x < cols; x++){
+      grid[y][x] = random([0, 255]);
+    }
+  }
+}
+
+function winCondition(){
+  let white = 0;
+  let gridSize = rows*cols;
+  for(let y = 0; y < rows; y++) {
+    for(let x = 0; x < cols; x++){
+      if (grid[y][x] === 255){
+        white++;
+      }
+    }
+  }
+  if (white === gridSize || white === 0){
+    return true;
+  }
+  else{
+    return false;
   }
 }

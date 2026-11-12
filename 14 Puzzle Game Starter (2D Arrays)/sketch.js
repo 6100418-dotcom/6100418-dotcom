@@ -115,11 +115,20 @@ function getCurrentY() {
 }
 
 function flip(x, y) {
+  let change = 0;
   if(grid[y][x] === 255) {
-    grid[y][x] = 0;
+    change = 255;
+    while (change >= 0){
+      change--;
+      grid[y][x] = change;
+    }
   }
-  else {
-    grid[y][x] = 255;
+  else if (grid[y][x] === 0) {
+    change = 0;
+    while(change <= 255) {
+      change++;
+      grid[y][x] = change;
+    }
   }
 }
 

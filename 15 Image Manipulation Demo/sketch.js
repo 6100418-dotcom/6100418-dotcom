@@ -22,13 +22,12 @@ function draw() {
   image(myVideo, 0, 0);
   loadPixels();
 
-  // boost();
+  boost();
 
   // greyscale();
 
-  background(0);
-
-  textEffect();
+  // background(0);
+  // textEffect();
 
   // updatePixels();
 }

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cdgm6yymqdoq8"
-path="res://.godot/imported/FG1 FOG (ALPHA 25%).png-0ad64edd4534be05535d07b4fa79b1f0.ctex"
+uid="uid://c2hnowugypbqp"
+path="res://.godot/imported/Aven_Wall.png-807b0e32e0a959c6f82ac9f96337dc7c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/tiles/FG1 FOG (ALPHA 25%).png"
-dest_files=["res://.godot/imported/FG1 FOG (ALPHA 25%).png-0ad64edd4534be05535d07b4fa79b1f0.ctex"]
+source_file="res://assets/player/Aven_Wall.png"
+dest_files=["res://.godot/imported/Aven_Wall.png-807b0e32e0a959c6f82ac9f96337dc7c.ctex"]
 
 [params]
 

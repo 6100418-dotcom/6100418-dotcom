@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b78ewoqbgbjtn"
-path="res://.godot/imported/Sky.png-f19bc59e54ec8515b99826fa9a98c089.ctex"
+uid="uid://ehsadeo3u6t7"
+path="res://.godot/imported/Aven_Jump.png-b3865dbc064a0bb1c5bc86a5f4beb305.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/tiles/Sky.png"
-dest_files=["res://.godot/imported/Sky.png-f19bc59e54ec8515b99826fa9a98c089.ctex"]
+source_file="res://assets/player/Aven_Jump.png"
+dest_files=["res://.godot/imported/Aven_Jump.png-b3865dbc064a0bb1c5bc86a5f4beb305.ctex"]
 
 [params]
 
